@@ -1,0 +1,50 @@
+<div class="container">
+  <h2 class="red-title"><%= @user.first_name + ' ' + @user.last_name %></h2>
+
+  <%= simple_form_for @post, remote: true do |f| %>
+    <div class="form--input">
+      <%= f.input :content, input_html: { class: "form--input_text" }, placeholder: "How do you sound like today?", label: false %>
+    </div>
+
+    <div class="form--input_elements d-flex justify-content-between mx-4">
+
+
+
+      <div class="form--input_submit">
+        <%= f.submit "Post", class: "btn-post  btn-bg", id: "post-submit", role: "status", remote: true %>
+      </div>
+
+
+
+    </div>
+  <% end %>
+
+
+  <% @posts.each do |post| %>
+    <div class="row"  id="post-<%= post.id %>">
+      <div class="col-12 post-container">
+
+        <!-- header -->
+        <div class="post-header d-flex justify-content-start">
+          <%= link_to user_path(post.user) do %>
+            <h5><%= post.user.first_name  %> <%= post.user.last_name  %></h5>
+          <% end %>
+          <p>
+            <%= link_to user_path(post.user) do %>
+              @<%= post.user.first_name %>
+            <% end %>
+            <span><%= distance_of_time_in_words(Time.now, post.created_at) %></span> ago
+          </p>
+        </div>
+
+        <!-- content -->
+        <div class="post-content">
+          <div class="post-text">
+            <h4><%= post.content %></h4>
+          </div>
+        </div>
+        <%= post != @posts.last ? "<hr>".html_safe : "" %>
+      </div>
+    </div>
+  <% end %>
+</div>
