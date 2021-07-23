@@ -19,32 +19,5 @@
     </div>
   <% end %>
 
-
-  <% @posts.each do |post| %>
-    <div class="row"  id="post-<%= post.id %>">
-      <div class="col-12 post-container">
-
-        <!-- header -->
-        <div class="post-header d-flex justify-content-start">
-          <%= link_to user_path(post.user) do %>
-            <h5><%= post.user.first_name  %> <%= post.user.last_name  %></h5>
-          <% end %>
-          <p>
-            <%= link_to user_path(post.user) do %>
-              @<%= post.user.first_name %>
-            <% end %>
-            <span><%= distance_of_time_in_words(Time.now, post.created_at) %></span> ago
-          </p>
-        </div>
-
-        <!-- content -->
-        <div class="post-content">
-          <div class="post-text">
-            <h4><%= post.content %></h4>
-          </div>
-        </div>
-        <%= post != @posts.last ? "<hr>".html_safe : "" %>
-      </div>
-    </div>
-  <% end %>
+  <%= render template: 'posts/index' %>
 </div>
