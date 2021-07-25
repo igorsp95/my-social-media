@@ -22,6 +22,7 @@
             <h4><%= post.content %></h4>
           </div>
         </div>
+        <hr>
         <% if current_user %>
           <br>
           <%= render 'posts/upvote_link', post: post %>
