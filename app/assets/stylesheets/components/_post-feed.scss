@@ -1,0 +1,40 @@
+.form--input{
+  background-color: #242526;
+  border-radius: 10px;
+  padding: 20px 10px;
+  margin-top: 15px;
+}
+
+.post-card{
+  background-color: #242526;
+  border-radius: 10px;
+  padding: 20px 20px;
+  margin-top: 15px;
+}
+
+.post-card .user-name-card{
+  text-decoration: none;
+  color: #dfdfdf;
+  transition: 0.3s ease;
+}
+
+.post-card .user-name-card:hover{
+    color: #f5f5f5;
+}
+
+.post-card p{
+  color: #606164;
+}
+
+.like-icon{
+  margin-right: 4px;
+  color: #606164;
+}
+
+.like-count{
+  margin-right: 14px;
+}
+
+.like-finger{
+  color: aqua;
+}

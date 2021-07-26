@@ -1,23 +1,15 @@
 <div class="container">
-  <h2 class="red-title"><%= @user.first_name + ' ' + @user.last_name %></h2>
-
-  <%= simple_form_for @post, remote: true do |f| %>
-    <div class="form--input">
-      <%= f.input :content, input_html: { class: "form--input_text" }, placeholder: "How do you sound like today?", label: false %>
-    </div>
-
-    <div class="form--input_elements d-flex justify-content-between mx-4">
-
-
-
-      <div class="form--input_submit">
-        <%= f.submit "Post", class: "btn-post  btn-bg", id: "post-submit", role: "status", remote: true %>
+  <div class="form--input">
+    <%= simple_form_for @post, remote: true do |f| %>
+      <div class="form--input">
+        <%= f.input :content, input_html: { class: "form-txt py-3" }, placeholder: "What do you want to post?", label: false %>
       </div>
-
-
-
-    </div>
-  <% end %>
-
+      <div class="form--input_elements d-flex justify-content-between mx-4">
+        <div class="form--input_submit">
+          <%= f.submit "Post", class: "btn btn-flat", id: "post-submit", role: "status", remote: true %>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <%= render template: 'posts/index' %>
 </div>
