@@ -4,20 +4,12 @@
       <div class="form--input">
         <%= f.input :content, input_html: { class: "form-txt py-3" }, placeholder: "What do you want to post?", label: false %>
       </div>
-
       <div class="form--input_elements d-flex justify-content-between mx-4">
-
-
-
         <div class="form--input_submit">
           <%= f.submit "Post", class: "btn btn-flat", id: "post-submit", role: "status", remote: true %>
         </div>
-
-
-
       </div>
     <% end %>
   </div>
-
   <%= render template: 'posts/index' %>
 </div>
