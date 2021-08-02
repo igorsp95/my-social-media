@@ -2,6 +2,11 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:user).order(updated_at: :desc)
+    @comment = Comment.new
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def upvote

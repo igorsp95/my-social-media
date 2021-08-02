@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="post-card">
+          <div class="row"  id="post-<%= @post.id %>">
+            <div class="col-12 post-container">
+
+              <!-- header -->
+              <div class="post-header d-flex justify-content-between">
+                <%= link_to user_path(@post.user), :class => "user-name-card"  do %>
+                  <h5><%= @post.user.first_name %> <%= @post.user.last_name %></h5>
+                <% end %>
+                <p>
+                  <span><%= distance_of_time_in_words(Time.now, @post.created_at) %></span> ago
+                </p>
+              </div>
+
+              <!-- content -->
+              <div class="post-content">
+                <div class="post-text">
+                  <h4><%= @post.content %></h4>
+                </div>
+              </div>
+              <hr>
+              <% if current_user %>
+                <div class="d-flex justify-content-start">
+                  <div class="like-icon">
+                    <%= render 'posts/upvote_link', post: @post %>
+                  </div>
+                  <div class="like-count">
+                    <%= render 'posts/like_count', post: @post %>
+                  </div>
+                  <div class="like-icon">
+                    <%= render 'posts/downvote_link', post: @post %>
+                  </div>
+                  <div class="like-count">
+                  <%= render 'posts/unlike_count', post: @post %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+  </div>
+</div>
