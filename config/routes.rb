@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'users#feed'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :users, only: [:index, :show] do
@@ -13,6 +13,6 @@ Rails.application.routes.draw do
       patch "downvote", to: "posts#downvote"
     end
 
-    resources :comments
+    resources :comments, only: [:create, :destroy]
   end
 end
