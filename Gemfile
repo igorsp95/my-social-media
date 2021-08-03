@@ -33,6 +33,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'acts_as_votable'
+gem 'cloudinary'
 
 group :development, :test do
   gem 'pry-byebug'
