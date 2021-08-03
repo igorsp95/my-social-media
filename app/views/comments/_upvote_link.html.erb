@@ -1,0 +1,9 @@
+<%= content_tag "div", id: "upvote-#{comment.id}" do %>
+  <%= link_to upvote_post_path(comment), method: :patch, remote: true, data: { disable_with: "voting..." } do %>
+    <% if current_user.voted_up_on? comment %>
+      <i class="fas fa-thumbs-up" style="color: #65ffa0;"></i>
+    <% else %>
+      <i class="far fa-thumbs-up" style="color: #65ffa0;"></i>
+    <% end %>
+  <% end %>
+<% end %>
