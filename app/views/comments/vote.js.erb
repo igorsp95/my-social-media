@@ -1,0 +1,4 @@
+document.getElementById("like-count-<%= @comment.id %>").innerHTML = "<%= j render "comments/like_count", post: @comment %>";
+document.getElementById("unlike-count-<%= @comment.id %>").innerHTML = "<%= j render "comments/unlike_count", post: @comment %>";
+document.getElementById("downvote-<%= @comment.id %>").innerHTML = "<%= j render "comments/downvote_link", post: @comment %>";
+document.getElementById("upvote-<%= @comment.id %>").innerHTML = "<%= j render "comments/upvote_link", post: @comment %>";

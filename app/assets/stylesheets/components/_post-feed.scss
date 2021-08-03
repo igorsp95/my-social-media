@@ -1,8 +1,7 @@
 .form--input{
-  background-color: #242526;
   border-radius: 10px;
-  padding: 20px 10px;
-  margin-top: 15px;
+  padding: 0px 0px;
+  margin-top: 5px;
 }
 
 .post-card{
@@ -12,14 +11,34 @@
   margin-top: 15px;
 }
 
+.post-card h5{
+  font-weight: bolder;
+}
+
 .post-card .user-name-card{
   text-decoration: none;
-  color: #dfdfdf;
+  color: #cac8c8;
   transition: 0.3s ease;
 }
 
 .post-card .user-name-card:hover{
-    color: #f5f5f5;
+  color: #f5f5f5;
+}
+
+.post-card .see-post-btn{
+  text-decoration: none;
+  color: #606164;
+  transition: 0.3s ease;
+}
+
+.post-card .see-post-btn:hover{
+  color: #7c7e83;
+}
+
+.post-card .username-comment{
+  font-size: 18px;
+  margin-top: 6px;
+  margin-left: 8px;
 }
 
 .post-card p{
@@ -37,4 +56,43 @@
 
 .like-finger{
   color: aqua;
+}
+
+.img-post {
+  width: auto;
+  max-height: 600px;
+  max-width: 1050px;
+}
+
+.tall-image {
+  width: auto !important;
+  height: 600px;
+}
+
+.video-post {
+  width: 100%;
+  max-height: 600px;
+}
+
+.tall-video {
+  width: auto !important;
+  height: 600px;
+}
+
+@media (max-width: 1575px) {
+  /* For a screen < 960px, this CSS will be read */
+  .img-post {
+    width: 100%;
+    max-height: 600px;
+  }
+
+  .tall-image {
+    width: 100%;
+    max-height: 1000px;
+  }
+
+  .tall-video {
+    width: 100%;
+    max-height: 1000px;
+  }
 }
