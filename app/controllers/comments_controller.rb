@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   # def index
   #   @post = Post.find(params[:post_id])
-  #   @comment = @post.comments.find(parent_id: params[parent_id])
+  #   @comment = Comment.includes(:user).order(created_at: :desc)
   # end
 
   # def new
