@@ -19,16 +19,18 @@
         <hr>
         <!-- content -->
         <div class="post-content">
-          <div class="post-text">
+          <div class="post-text mb-3">
             <h4><%= @post.content %></h4>
           </div>
-          <% @post.photos.each do |photo| %>
-            <% if photo.blob.video? %>
-              <%= cl_video_tag "#{photo.key}", controls: true, class: "video-post" %>
-            <% else %>
-              <%= cl_image_tag "#{photo.key}", class: "img-post" %>
+          <div class="post-images text-center">
+            <% @post.photos.each do |photo| %>
+              <% if photo.blob.video? %>
+                <%= cl_video_tag "#{photo.key}", controls: true, class: "video-post" %>
+              <% else %>
+                <%= cl_image_tag "#{photo.key}", class: "img-post" %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
         <div class="mt-3 ml-2">
           <% if current_user %>
@@ -66,19 +68,17 @@
           </div>
           <hr>
           <% end %>
-        </div>
-        <div class="form--input">
-          <%= simple_form_for([@post, @post.comments.build], remote: true) do |f| %>         
-            <div class="form--input">
-              <%= f.input :content, input_html: { class: "form-txt" }, placeholder: "What do you want to comment?", label: false %>
+        </div>       
+        <%= simple_form_for([@post, @post.comments.build], remote: true) do |f| %>         
+          <div class="form--input">
+            <%= f.input :content, input_html: { class: "form-txt" }, placeholder: "What do you want to comment?", label: false %>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="form--input_submit">
+              <%= f.submit "Comment", class: "btn btn-flat", id: "post-submit", role: "status", remote: true %>
             </div>
-            <div class="form--input_elements d-flex justify-content-between">
-              <div class="form--input_submit">
-                <%= f.submit "Post Comment", class: "btn btn-flat", id: "post-submit", role: "status", remote: true %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

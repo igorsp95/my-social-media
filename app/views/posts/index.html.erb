@@ -20,20 +20,20 @@
         <hr>
         <!-- content -->
         <div class="post-content">
-          <div class="post-text">
+          <div class="post-text mb-3">
             <h4><%= post.content %></h4>
           </div>
-            <div class="post-images text-center">
-          <%= link_to post_path(post) do %>
-              <% post.photos.each do |photo| %>
-                <% if photo.blob.video? %>
-                  <%= cl_video_tag "#{photo.key}", controls: true, class: "video-post" %>
-                <% else %>
-                  <%= cl_image_tag "#{photo.key}", class: "img-post" %>
+          <div class="post-images text-center">
+            <%= link_to post_path(post) do %>
+                <% post.photos.each do |photo| %>
+                  <% if photo.blob.video? %>
+                    <%= cl_video_tag "#{photo.key}", controls: true, class: "video-post" %>
+                  <% else %>
+                    <%= cl_image_tag "#{photo.key}", class: "img-post" %>
+                  <% end %>
                 <% end %>
-              <% end %>
-          <% end %>
-            </div>
+            <% end %>
+          </div>
         </div>
         <hr>
         <div class="d-flex justify-content-between">
