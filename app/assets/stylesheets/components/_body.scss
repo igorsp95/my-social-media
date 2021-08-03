@@ -7,3 +7,16 @@ body{
 hr{
   background-color: #4a4b4d;
 }
+
+.post-container{
+  width: 800px;
+  margin: 0 auto;
+}
+
+.profile-container{
+  width: 460px;
+  margin: 0 left;
+  margin-left: 40px;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 85px;
+}

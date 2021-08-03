@@ -49,6 +49,18 @@
   color: #606164;
 }
 
+.profile-card{
+  background-color: #24252642;
+  border-radius: 10px;
+  padding: 25px 20px;
+  margin-top: 15px;
+}
+
+.profile-card .profile-name{
+  font-size: 26px;
+  font-weight: lighter;
+}
+
 .like-icon{
   margin-right: 4px;
   color: #606164;
@@ -64,8 +76,8 @@
 
 .img-post {
   width: auto;
-  max-height: 600px;
-  max-width: 1050px;
+  max-height: 800px;
+  max-width: 760px;
 }
 
 .tall-image {

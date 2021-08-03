@@ -1,4 +1,6 @@
-<div class="container mb-4">
+<%= render 'shared/profile-card'%>
+
+<div class="post-container mb-4">
   <div class="post-card">
     <%= simple_form_for @post, remote: true do |f| %>
       <div class="form--input">
