@@ -8,7 +8,7 @@
           <%= image_tag "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg", class: "avatar"%>
         <% end %>
       <% end %>
-        <h5 class="profile-name mt-3"><%= @user.first_name %> <%= @user.last_name %></h5>
+        <h5 class="profile-name mt-3"><%= current_user.first_name %> <%= current_user.last_name %></h5>
     </div>
   </div>
 </div>

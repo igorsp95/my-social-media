@@ -20,8 +20,8 @@
         <!-- header -->
         <div class="post-header d-flex justify-content-between">
           <%= link_to user_path(@post.user), :class => "user-name-card d-flex"  do %>
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face, class: "avatar-post-show"%>
+            <% if @post.user.photo.attached? %>
+              <%= cl_image_tag @post.user.photo.key, crop: :thumb, gravity: :face, class: "avatar-post-show"%>
             <% else %>
               <%= image_tag "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg", class: "avatar"%>
             <% end %>
@@ -67,12 +67,12 @@
         </div>
         <hr>
         <div>
-          <% @comments.each do |comment| %>
+          <% @post.comments.each do |comment| %>
           <div class="ml-2">
             <div class="d-flex mb-2">
               <%= link_to user_path(@post.user)  do %>
-                <% if current_user.photo.attached? %>
-                  <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face, class: "avatar-post-comment"%>
+                <% if comment.user.photo.attached? %>
+                  <%= cl_image_tag comment.user.photo.key, crop: :thumb, gravity: :face, class: "avatar-post-comment"%>
                 <% else %>
                   <%= image_tag "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg", class: "avatar"%>
                 <% end %>
@@ -84,7 +84,7 @@
           <hr>
           <% end %>
         </div>       
-        <%= simple_form_for([@post, @post.comments.build], remote: true) do |f| %>         
+        <%= simple_form_for([@post, @comment], remote: true) do |f| %>         
           <div class="form--input">
             <%= f.input :content, input_html: { class: "form-txt" }, placeholder: "What do you want to comment?", label: false %>
           </div>
