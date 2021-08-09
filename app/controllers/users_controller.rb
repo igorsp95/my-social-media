@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def feed
     @user = current_user
@@ -13,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @post = Post.new
+    @posts = @user.posts.order(created_at: :desc)
   end
-
 end

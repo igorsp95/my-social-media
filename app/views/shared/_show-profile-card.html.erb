@@ -1,0 +1,14 @@
+<div class="profile-container">
+  <div class="profile-card text-center">
+    <div id="profile-img">
+      <%= link_to user_path(@user), :class => "user-name-card"  do %>
+        <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key, crop: :thumb, gravity: :face, class: "avatar-large"%>
+        <% else %>
+          <%= image_tag "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg", class: "avatar"%>
+        <% end %>
+      <% end %>
+        <h5 class="profile-name mt-3"><%= @user.first_name %> <%= @user.last_name %></h5>
+    </div>
+  </div>
+</div>
