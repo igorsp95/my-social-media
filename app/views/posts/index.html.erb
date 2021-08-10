@@ -55,23 +55,28 @@
           <% end %>
           <p> <span><%= distance_of_time_in_words(Time.now, post.created_at) %> ago</span> </p>
         </div>
-        <div>
-          <% post.comments.each do |comment| %>
-          <div class="ml-2">
-            <div class="d-flex mb-2">
-              <%= link_to user_path(post.user) do %>
-                <% if comment.user.photo.attached? %>
-                  <%= cl_image_tag comment.user.photo.key, crop: :thumb, gravity: :face, class: "avatar-post-comment"%>
-                <% else %>
-                  <%= image_tag "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg", class: "avatar"%>
-                <% end %>
-              <% end %>      
-              <h5 class="username-comment"><%= comment.user.first_name %> <%= comment.user.last_name %>&nbsp; </h5>
-            </div>
-            <p> <%= comment.content %></p>
+        <div class="accordion">
+          <div class="contentBx">
+            <div class="label">Comments</div>
+              <% post.comments.each do |comment| %>
+              <div class="content">
+                <div class="ml-2">
+                  <div class="d-flex mb-2">
+                    <%= link_to user_path(post.user) do %>
+                      <% if comment.user.photo.attached? %>
+                        <%= cl_image_tag comment.user.photo.key, crop: :thumb, gravity: :face, class: "avatar-post-comment"%>
+                      <% else %>
+                        <%= image_tag "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg", class: "avatar"%>
+                      <% end %>
+                    <% end %>      
+                    <h5 class="username-comment"><%= comment.user.first_name %> <%= comment.user.last_name %>&nbsp; </h5>
+                  </div>
+                  <p> <%= comment.content %></p>
+                </div>
+                <hr>
+              </div>
+              <% end %>
           </div>
-          <hr>
-          <% end %>
         </div>
         <%= simple_form_for([post, post.comments.build], remote: true) do |f| %>         
           <div class="form--input">

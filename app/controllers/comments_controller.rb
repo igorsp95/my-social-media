@@ -1,12 +1,4 @@
 class CommentsController < ApplicationController
-  # def index
-  #   @post = Post.find(params[:post_id])
-  #   @comment = Comment.includes(:user).order(created_at: :desc)
-  # end
-
-  # def new
-  #   @post = Post.find(params[:post_id])
-  # end
 
   def upvote
     @post = Post.find(params[:post_id])
@@ -38,7 +30,11 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.post = @post
     if @comment.save
-      redirect_to request.referrer
+      respond_to do |format|
+        format.js {render inline: "location.reload();" }
+      end
+    else
+      redirect_to root_path
     end
   end
 
