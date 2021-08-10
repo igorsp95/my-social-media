@@ -1,25 +1,22 @@
-<%= render 'shared/show-profile-card'%>
+<%= render 'shared/profile-card'%>
 
-<div class="post-container mb-4">
+
+<div class="post-container">
   <div class="post-card">
-    <%= simple_form_for @post, remote: true do |f| %>
-      <div class="form--input">
-        <%= f.input :content, input_html: { class: "form-txt py-3" }, placeholder: "What do you want to post?", label: false %>
+    <div id="profile-img" class="d-flex justify-content-md-between p-2">
+      <div class="text-center">
+        <%= link_to user_path(@user), :class => "user-name-card"  do %>
+          <% if @user.photo.attached? %>
+            <%= cl_image_tag @user.photo.key, crop: :thumb, gravity: :face, class: "avatar-large"%>
+          <% else %>
+            <%= image_tag "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg", class: "avatar"%>
+          <% end %>
+        <% end %>
+          <h5 class="profile-name mt-3"><%= @user.first_name %> <%= @user.last_name %></h5>
       </div>
-      <div class="form--input_elements d-flex justify-content-right">
-        <div class="form--input_submit">
-          <%= f.submit "Post", class: "btn btn-flat", id: "post-submit", role: "status", remote: true %>
-        </div>
-          <label class="btn btn-flat">
-            <i class="fas fa-photo-video"></i>
-            <span style="display:none;">
-              <%= f.input :photos, as: :file, input_html: { multiple: true }, id: 'file-upload', class: 'photo_upload ', label: false %>
-            </span>
-          </label>
-      </div>
-    <% end %>
+      <h4>Posts: <%= @user.posts.count%></h4>
+    </div>
   </div>
-  <%= render template: 'posts/index' %>
 </div>
 
 <div class="post-container mb-4">
@@ -79,6 +76,29 @@
               </div>
             <% end %>
             <p> <span><%= distance_of_time_in_words(Time.now, post.created_at) %> ago</span> </p>
+          </div>
+          <div class="accordion">
+            <div class="contentBx">
+              <div class="label">Comments</div>
+                <% post.comments.each do |comment| %>
+                <div class="content">
+                  <div class="ml-2">
+                    <div class="d-flex mb-2">
+                      <%= link_to user_path(post.user) do %>
+                        <% if comment.user.photo.attached? %>
+                          <%= cl_image_tag comment.user.photo.key, crop: :thumb, gravity: :face, class: "avatar-post-comment"%>
+                        <% else %>
+                          <%= image_tag "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg", class: "avatar"%>
+                        <% end %>
+                      <% end %>      
+                      <h5 class="username-comment"><%= comment.user.first_name %> <%= comment.user.last_name %>&nbsp; </h5>
+                    </div>
+                    <p> <%= comment.content %></p>
+                  </div>
+                  <hr>
+                </div>
+                <% end %>
+            </div>
           </div>
           <%= simple_form_for([post, post.comments.build], remote: true) do |f| %>         
             <div class="form--input">

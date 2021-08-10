@@ -112,3 +112,32 @@
     max-height: 1000px;
   }
 }
+
+.accordion .contentBx{
+  position: relative;
+}
+
+.accordion .contentBx .label{
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.accordion .contentBx .label::before{
+  position: absolute;
+  // transform: translateY(-50%);
+  // font-size: 1.5em;
+}
+
+.accordion .contentBx .content{
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  // transition: 0.5s;
+  overflow-y: auto;
+}
+
+.accordion .contentBx.active .content{
+  height: 115px;
+}
