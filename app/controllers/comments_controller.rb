@@ -30,6 +30,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.post = @post
     if @comment.save
+      # redirect_to request.referrer
       respond_to do |format|
         format.js {render inline: "location.reload();" }
       end
@@ -43,4 +44,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content, :user, :post_id)
   end
+
 end

@@ -26,6 +26,7 @@ require("../components/comments")
 // External imports
 import "bootstrap";
 
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
