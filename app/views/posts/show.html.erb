@@ -69,19 +69,19 @@
         <div>
           <div class="mb-3">Comments</div>
           <% @post.comments.each do |comment| %>
-          <div class="ml-2">
-            <div class="d-flex mb-2">
-              <%= link_to user_path(@post.user)  do %>
-                <% if comment.user.photo.attached? %>
-                  <%= cl_image_tag comment.user.photo.key, crop: :thumb, gravity: :face, class: "avatar-post-comment"%>
-                <% else %>
-                  <%= image_tag "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg", class: "avatar"%>
-                <% end %>
-              <% end %>      
-              <h5 class="username-comment"><%= comment.user.first_name %> <%= comment.user.last_name %>&nbsp; </h5>
+            <div class="ml-2">
+              <div class="d-flex mb-2">
+                <%= link_to user_path(@post.user)  do %>
+                  <% if comment.user.photo.attached? %>
+                    <%= cl_image_tag comment.user.photo.key, crop: :thumb, gravity: :face, class: "avatar-post-comment"%>
+                  <% else %>
+                    <%= image_tag "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg", class: "avatar"%>
+                  <% end %>
+                <% end %>      
+                <h5 class="username-comment"><%= comment.user.first_name %> <%= comment.user.last_name %>&nbsp; </h5>
+              </div>
+              <p id="comment-<%= comment.id %>"> <%= comment.content %></p>
             </div>
-            <p> <%= comment.content %></p>
-          </div>
           <hr>
           <% end %>
         </div>       

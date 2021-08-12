@@ -4,7 +4,7 @@
   <div class="post-card">
     <%= simple_form_for @post, remote: true do |f| %>
       <div class="form--input">
-        <%= f.input :content, input_html: { class: "form-txt py-3" }, placeholder: "What do you want to post?", label: false %>
+        <%= f.input :content, input_html: { class: "form-txt" }, placeholder: "What do you want to comment?", label: false %>
       </div>
       <div class="form--input_elements d-flex justify-content-right">
         <div class="form--input_submit">
