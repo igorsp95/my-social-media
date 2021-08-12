@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def feed
     @user = current_user
     @post = Post.new
-    @posts = @posts = Post.all.order(updated_at: :desc)
+    @posts = Post.includes(:user).order(updated_at: :desc)
   end
 
   def index

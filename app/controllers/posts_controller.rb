@@ -41,7 +41,7 @@ class PostsController < ApplicationController
       redirect_to request.referrer
       # redirect_to feed_users_path
     else
-      redirect_to root_path
+      render :new
     end
   end
 

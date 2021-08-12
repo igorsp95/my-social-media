@@ -30,12 +30,12 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.post = @post
     if @comment.save
-      # redirect_to request.referrer
-      respond_to do |format|
-        format.js {render inline: "location.reload();" }
-      end
+      redirect_to request.referrer
+      # respond_to do |format|
+      #   format.js {render inline: "location.reload();" }
+      # end
     else
-      redirect_to root_path
+      redirect_to :new
     end
   end
 
